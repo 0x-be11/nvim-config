@@ -54,7 +54,27 @@ return require('packer').startup(function(use)
 	}
 
 	use "rafamadriz/friendly-snippets"
-	use "saadparwaiz1/cmp_luasnip"
+	use "saadparwaiz1/cmp_luasnip" 
+	use({
+    'MeanderingProgrammer/render-markdown.nvim',
+    after = { 'nvim-treesitter' },
+    requires = { 'nvim-mini/mini.nvim', opt = true },            -- if you use the mini.nvim suite
+    -- requires = { 'nvim-mini/mini.icons', opt = true },        -- if you use standalone mini plugins
+    -- requires = { 'nvim-tree/nvim-web-devicons', opt = true }, -- if you prefer nvim-web-devicons
+    config = function()
+        require('render-markdown').setup({
+		enabled=true,
+
+	})
+    end,
+    })
+	-- install without yarn or npm
+use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+})
+
+use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
 end)
 
