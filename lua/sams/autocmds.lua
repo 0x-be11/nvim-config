@@ -21,3 +21,12 @@ vim.api.nvim_create_autocmd("BufLeave", {
 		--print('Normal mode...')
 	end,
 })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = generalSettingsGroup,
+	pattern = {'*.md'},
+	callback = function()
+		require('render-markdown').enable()
+		--print('Rendering markdown')
+	end,
+})
