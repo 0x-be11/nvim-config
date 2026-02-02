@@ -1,6 +1,6 @@
 require('sams')
 
-require('gai')
+--require('gai')
 -- Chat commands
 vim.keymap.set("n", "<leader>gc", ":GaiChatOpen<CR>", { desc = "Open Gemini Chat buffer" })
 vim.keymap.set("n", "<leader>gs", ":GaiChatSend<CR>", { desc = "Send buffer to Gemini" })
