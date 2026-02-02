@@ -11,3 +11,5 @@ vim.opt.termguicolors = false
 
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
+
+vim.lsp.enable("jdtls")

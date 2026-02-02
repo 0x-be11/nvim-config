@@ -74,17 +74,7 @@ use({
     run = function() vim.fn["mkdp#util#install"]() end,
 })
 
-use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
-
-use({
-	"robitx/gp.nvim",
-	config = function()
-		local conf = {
-			openai_api_key = { "cat", "~/api_keys/openai_api_key" },
-		}
-		require("gp").setup(conf)
-	end,
-})
+use "mfussenegger/nvim-jdtls"
 
 end)
 

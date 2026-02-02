@@ -30,3 +30,13 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		--print('Rendering markdown')
 	end,
 })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = generalSettingsGroup,
+	pattern = {'gai://chat'},
+	callback = function()
+		require('render-markdown').enable()
+		-- set filetype=markdown
+		--print('Rendering markdown')
+	end,
+})

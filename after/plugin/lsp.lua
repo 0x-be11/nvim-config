@@ -2,7 +2,7 @@ local lsp = require('lspconfig').util.default_config
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-	ensure_installed = {'clangd', 'rust_analyzer', 'lua_ls', 'hls'}, --rip sumneko_lua
+	ensure_installed = {'clangd', 'rust_analyzer', 'lua_ls'}, --FUCK HASKELL
 	handlers = {
 		function(server_name)
 			require('lspconfig')[server_name].setup({}) -- add . before []?
