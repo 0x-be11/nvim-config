@@ -76,5 +76,8 @@ use({
 
 use "mfussenegger/nvim-jdtls"
 
+-- rocq prover
+use "whonore/Coqtail"
+
 end)
 
