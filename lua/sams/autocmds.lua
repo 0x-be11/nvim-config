@@ -40,3 +40,41 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		--print('Rendering markdown')
 	end,
 })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = generalSettingsGroup,
+	pattern = {'*Test.java'},
+	callback = function()
+		--print('test file')
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = generalSettingsGroup,
+	pattern = "*",
+	callback = function()
+		local name = vim.fn.expand("%:t")
+		if name:find("%.") or name == "" then
+			return
+		end
+		vim.opt.tabstop = 2
+		vim.opt.shiftwidth = 2
+		vim.opt.expandtab = true
+		--print('2 space mode...')
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufLeave", {
+	group = generalSettingsGroup,
+	pattern = "*",
+	callback = function()
+		local name = vim.fn.expand("%:t")
+		if name:find("%.") or name == "" then
+			return
+		end
+		vim.opt.tabstop = 4
+		vim.opt.shiftwidth = 4
+		vim.opt.expandtab = false
+		--print('Normal mode...')
+	end,
+})

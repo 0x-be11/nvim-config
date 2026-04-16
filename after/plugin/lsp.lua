@@ -1,12 +1,50 @@
 local lsp = require('lspconfig').util.default_config
 
+--vim.lsp.config('hls', {
+--	cmd = { "haskell-language-server-wrapper", "--lsp" },
+--	filetypes = { 'haskell', 'lhaskell' },
+--	root_markers = { 'hie.yaml', 'stack.yaml', 'cabal.project', '*.cabal', 'package.yaml', '*.hs' },
+--	settings = {
+--		haskell = {
+--			formattingProvider = "ormolu",
+--		},
+--	},
+--	capabilities = capabilities,
+--})
+--vim.lsp.enable('hls')
+--vim.lsp.completion.enable(true)
+--require('lspconfig').hls.setup = function() end
+vim.lsp.config('hls', {
+	cmd = {"haskell-language-server-wrapper", "--lsp" },
+	filetypes = { 'haskell', 'lhaskell', 'cabal' },
+	root_markers = { '*.cabal', 'stack.yaml', 'cabal.project', 'package.yaml', 'hie.yaml' },
+})
+vim.lsp.enable('hls')
+
 require('mason').setup({})
 require('mason-lspconfig').setup({
-	ensure_installed = {'clangd', 'rust_analyzer', 'lua_ls'}, --FUCK HASKELL
+	ensure_installed = {'clangd', 'rust_analyzer', 'lua_ls'},
 	handlers = {
 		function(server_name)
 			require('lspconfig')[server_name].setup({}) -- add . before []?
 		end,
+		["hls"] = function() end,
+	--	["coq_lsp"] = function()
+	--		require('lspconfig').coq_lsp.setup({
+	--			filetypes = {},
+	--			autostart = false,
+	--			cmd = {
+	--				"coq-lsp",
+	--				"--max-memory", "2G",
+	--				"-j", "2"
+	--			},
+	--			settings = {
+	--				coq = {
+	--					background_checking = false,
+	--				}
+	--			}
+	--		})
+	--	end,
 	},
 })
 
